@@ -1,26 +1,118 @@
 @import "tailwindcss";
+@plugin"@tailwindcss/typography";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+  --foreground-rgb: 0, 0, 0;
+  --background-start-rgb: 214, 219, 220;
+  --background-end-rgb: 255, 255, 255;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  color: rgb(var(--foreground-rgb));
+  background: linear-gradient(
+      to bottom,
+      transparent,
+      rgb(var(--background-end-rgb))
+    )
+    rgb(var(--background-start-rgb));
+}
+
+@layer components {
+  /* --- BASE PROSE STYLES (Improved Typography) --- */
+  .prose {
+    /* Slightly darker text for better readability */
+    @apply text-gray-700 leading-relaxed text-base; 
+  }
+
+  /* --- HEADINGS (Emphasis and Thematic Lines) --- */
+  .prose h1 {
+    /* Stronger border with theme color */
+    @apply text-3xl font-extrabold mt-10 mb-4 text-gray-900 pb-3;
+  }
+
+  .prose h2 {
+    /* Slightly less margin at the top to feel connected to content */
+    @apply text-2xl font-bold mt-8 mb-4 text-blue-500; 
+  }
+
+  .prose h3 {
+    /* Subtle underline for secondary heading */
+    @apply text-xl font-semibold mt-6 mb-3 text-gray-800 border-b border-gray-100 pb-1;
+  }
+
+  /* --- TEXT ELEMENTS --- */
+  .prose p {
+    @apply mb-4 leading-relaxed;
+  }
+  
+  /* --- LINKS (Thematic and Interactive) --- */
+  .prose a {
+    /* Use a darker blue for better contrast and a smoother transition */
+    @apply text-blue-600 hover:text-blue-800 font-medium transition-colors duration-200 ease-in-out; 
+  }
+
+  /* --- LISTS (Structured and Spaced) --- */
+  .prose ul, .prose ol {
+    @apply mb-4 pl-6;
+  }
+
+  .prose ul {
+    /* Use a disc for consistency, add slightly more vertical space */
+    @apply list-disc space-y-2 text-gray-700; 
+  }
+
+  .prose ol {
+    @apply list-decimal space-y-2 text-gray-700;
+  }
+
+  .prose li {
+    @apply leading-relaxed;
+  }
+
+  /* --- BLOCKQUOTE (Thematic and Stand-out) --- */
+  .prose blockquote {
+    /* Keep theme color, slightly darker background for better separation, add a shadow */
+    @apply border-l-4 border-blue-600 bg-blue-50 px-6 py-4 my-6 rounded-r-lg italic shadow-md; 
+    /* You could also add a small shadow: shadow-inner */
+  }
+
+  /* --- CODE BLOCKS (Standardized and Clear) --- */
+  .prose pre {
+    /* Keep dark theme for code, add subtle border for depth */
+    @apply bg-gray-800 text-gray-100 p-4 rounded-lg overflow-x-auto my-6 border border-gray-700; 
+  }
+
+  .prose code {
+    /* Inline code with a slight blue tint background for separation */
+    @apply bg-blue-50 text-blue-700 px-2 py-1 rounded text-sm font-mono border border-blue-100;
+  }
+
+  .prose pre code {
+    /* Inherit styles within pre tags */
+    @apply bg-transparent text-inherit p-0 border-none; 
+  }
+
+  /* --- TABLES (Clean and Readable) --- */
+  .prose table {
+    /* Full border, subtle shadow for structure */
+    @apply min-w-full divide-y divide-gray-200 border border-gray-300 my-6 rounded-lg overflow-hidden shadow-sm; 
+  }
+
+  .prose th {
+    /* Use a blue tint for the header row */
+    @apply px-4 py-3 bg-blue-50 text-left text-sm font-semibold text-blue-500 border-b border-blue-200; 
+  }
+
+  .prose td {
+    /* Clean data rows */
+    @apply px-4 py-3 text-sm text-gray-700 border-b border-gray-200;
+  }
+
+  /* --- UTILITY (Keep existing utility) --- */
+  .line-clamp-2 {
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
 }

@@ -19,7 +19,12 @@ const eslintConfig = [
       "build/**",
       "next-env.d.ts",
     ],
+     rules: {
+      '@typescript-eslint/no-this-alias' : 'off',
+      '@typescript-eslint/no-require-imports' : 'off'
+    },
   },
+  
 ];
 
 export default eslintConfig;
