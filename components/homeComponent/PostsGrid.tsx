@@ -1,7 +1,4 @@
-'use client';
-
-import { useState, useEffect } from 'react';
-import PostCard from './PostCard';
+import dynamic from 'next/dynamic';
 
 interface Post {
   id: string;
@@ -15,10 +12,6 @@ interface Post {
   updatedAt: string;
 }
 
-interface User {
-  id: string;
-}
-
 interface PostsGridProps {
   posts: Post[];
   categories: string[];
@@ -27,18 +20,22 @@ interface PostsGridProps {
   onSearch: (term: string) => void;
 }
 
+// Dynamically import react-virtualized with SSR disabled
+const VirtualizedPosts = dynamic(
+  () => import('./VirtualizedPosts'),
+  { 
+    ssr: false,
+  }
+);
+
 export default function PostsGrid({
   posts,
-  categories,
   selectedCategory,
   onCategoryChange,
   onSearch,
 }: PostsGridProps) {
-
   return (
     <>
-      
-      {/* Posts List or No Posts Found */}
       {posts.length === 0 ? (
         <div className="text-center py-16 bg-white border border-gray-200 rounded-xl">
           <div className="max-w-md mx-auto">
@@ -67,24 +64,9 @@ export default function PostsGrid({
           </div>
         </div>
       ) : (
-        <>
-          {/* Posts List */}
-          <div className="space-y-8">
-            {posts.map((post) => (
-              <PostCard
-                key={post.id}
-                post={post}
-              />
-            ))}
-          </div>
-
-          {/* Load More */}
-          {/* {posts.length > 10 && <div className="text-center mt-12">
-            <button className="bg-gray-100 text-gray-700 px-8 py-3 rounded-lg font-medium hover:bg-gray-200 transition-colors">
-              Load More Articles
-            </button>
-          </div>} */}
-        </>
+        <div className="flex-1 min-h-[400px]">
+          <VirtualizedPosts posts={posts} />
+        </div>
       )}
     </>
   );
