@@ -38,6 +38,13 @@ export const auth = betterAuth({
     window: 60,
     max: 3,
   },
+  advanced:{
+    cookies:{
+      session_token:{
+        name: "session_token"
+      }
+    }
+  },
   plugins: [nextCookies()]
 });
 
