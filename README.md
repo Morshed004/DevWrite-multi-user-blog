@@ -1,7 +1,13 @@
-# Next.js Blog Platform with Admin Dashboard
+# DevWrite-Multi-User-Blog
 
 A full-featured **Next.js 16** blogging platform built with **Prisma**, **Better Auth**, and **Tailwind CSS 4**.  
 It includes **user authentication**, **admin management**, **post creation/editing**, **markdown support**, and **modern UI skeletons** for loading states.
+
+![Next.js](https://img.shields.io/badge/Next.js-16-black?logo=nextdotjs)
+![TypeScript](https://img.shields.io/badge/TypeScript-5-blue?logo=typescript)
+![Prisma](https://img.shields.io/badge/Prisma-ORM-blue?logo=prisma)
+![TailwindCSS](https://img.shields.io/badge/TailwindCSS-4-38BDF8?logo=tailwindcss)
+![License](https://img.shields.io/badge/License-MIT-green)
 
 ---
 
@@ -123,5 +129,3 @@ npm run dev
 Then visit:
 👉 [http://localhost:3000](http://localhost:3000)
 
-
-# DevWrite-Multi-User-Blog
