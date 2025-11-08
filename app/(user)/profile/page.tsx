@@ -4,6 +4,8 @@ import { Suspense } from "react";
 import { Metadata } from "next";
 import Link from "next/link";
 import { PencilIcon, PlusIcon } from "@heroicons/react/24/outline";
+import { getServerSession } from "@/lib/action/get-session";
+import { redirect } from "next/navigation";
 
 export const metadata: Metadata = {
   title: "Profile"
@@ -11,6 +13,11 @@ export const metadata: Metadata = {
 
 // Main component with Suspense
 export default async function Profile() {
+  const session = await getServerSession();
+  const user = session?.user;
+  if(!user){
+    redirect("/signin")
+  }
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-50 to-blue-50">
       {/* Header */}

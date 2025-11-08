@@ -1,6 +1,6 @@
+import Loader from "@/components/Loader";
 import Link from "next/link";
 import { Suspense } from "react";
-import FullPageLoading from "./components/FullPageLoading";
 
 export default async function AdminLayout({
   children,
@@ -69,7 +69,7 @@ export default async function AdminLayout({
           </div>
         </div>
       </nav>
-      <Suspense fallback={<FullPageLoading />}>
+      <Suspense fallback={<Loader />}>
        {children}
       </Suspense>
     </div>
