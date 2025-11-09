@@ -102,7 +102,7 @@ export default function Header({ user }: HeaderProps) {
     >
       <div className="container mx-auto px-4 sm:px-6 flex items-center justify-between h-16">
         {/* Logo */}
-        <Link href="/" className="flex items-center space-x-3 group">
+        <Link href="/" className="flex items-center space-x-3 group select-none">
           <div className="w-9 h-9 bg-blue-600 rounded-xl flex items-center justify-center shadow-lg group-hover:scale-105 transition-all">
             <span className="text-white font-bold text-sm">DW</span>
           </div>

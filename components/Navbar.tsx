@@ -1,4 +1,3 @@
-import React from 'react'
 import Header from './homeComponent/Header'
 import { getServerSession } from '@/lib/action/get-session';
 
