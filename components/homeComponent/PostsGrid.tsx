@@ -1,4 +1,4 @@
-import dynamic from 'next/dynamic';
+import PostCard from './PostCard';
 
 interface Post {
   id: string;
@@ -20,13 +20,7 @@ interface PostsGridProps {
   onSearch: (term: string) => void;
 }
 
-// Dynamically import react-virtualized with SSR disabled
-const VirtualizedPosts = dynamic(
-  () => import('./VirtualizedPosts'),
-  { 
-    ssr: false,
-  }
-);
+
 
 export default function PostsGrid({
   posts,
@@ -64,9 +58,17 @@ export default function PostsGrid({
           </div>
         </div>
       ) : (
-        <div className="flex-1 min-h-[400px]">
-          <VirtualizedPosts posts={posts} />
-        </div>
+         <>
+          {/* Posts List */}
+          <div className="space-y-8">
+            {posts.map((post) => (
+              <PostCard
+                key={post.id}
+                post={post}
+              />
+            ))}
+          </div>
+        </>
       )}
     </>
   );
