@@ -40,13 +40,21 @@ export const metadata: Metadata = {
     siteName: "DevWrite",
     locale: "en_US",
     type: "website",
+    images: [
+      {
+        url: "/opengraph-image.png",
+        width: 1200,
+        height: 630,
+        alt: "DevWrite Open Graph Image",
+      },
+    ],
   },
 
   twitter: {
     card: "summary_large_image",
     title: "DevWrite – Developers Write, Share & Grow",
-    description:
-      "A modern platform where developers share insights, tutorials, and ideas in web development, design, and technology.",
+    description: "A modern platform where developers share insights, tutorials, and ideas in web development, design, and technology.",
+    images: ["/opengraph-image.png"],
   },
 };
 
@@ -62,7 +70,7 @@ export default function RootLayout({
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
         {children}
-        <Toaster position="top-center" richColors/>
+        <Toaster position="top-center" richColors />
       </body>
     </html>
   );
