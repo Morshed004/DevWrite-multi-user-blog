@@ -42,7 +42,7 @@ export const metadata: Metadata = {
     type: "website",
     images: [
       {
-        url: "/opengraph-image.png",
+        url: "./images/opengraph-image.png",
         width: 1200,
         height: 630,
         alt: "DevWrite Open Graph Image",
@@ -54,7 +54,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "DevWrite – Developers Write, Share & Grow",
     description: "A modern platform where developers share insights, tutorials, and ideas in web development, design, and technology.",
-    images: ["/opengraph-image.png"],
+    images: ["./images/opengraph-image.png"],
   },
 };
 
